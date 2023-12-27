@@ -1,0 +1,14 @@
+RangeMapNew("kcdb");
+RangeMapAddNode("kcdb", "127.0.0.1", 12121, 1, "x");
+RangeMapAddNode("kcdb", "127.0.0.1", 12122, 0, "x");
+RangeMapFlush("kcdb");
+
+RangeMapNew("mm");
+RangeMapAddNode("mm", "127.0.0.1", 12121, 1, "x");
+RangeMapAddNode("mm", "127.0.0.1", 12122, 0, "x");
+RangeMapFlush("mm");
+
+RangeMapNew("x");
+RangeMapAddNode("x", "127.0.0.1", 12121, 1, "x");
+RangeMapAddNode("x", "127.0.0.1", 12122, 0, "x");
+RangeMapFlush("x");

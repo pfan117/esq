@@ -1,0 +1,19 @@
+LogPrintEnable();
+#LogPrintDisable();
+
+# Create demo server instance
+CreateSslEccCtx("DemoSSLCtx", "demo/keys/EccCA.key", "demo/keys/EccCA.pem");
+StartH2Instance("h2esq-demo-server", "DemoSSLCtx", 10000);
+StartHostControlInstance(22123);
+
+# Bind services
+SimpleFileServiceBindInstance("h2esq-demo-server", "/", "./demo/local-files/", "SendIndexHTML");
+SimpleFileServiceBindInstance("h2esq-demo-server", "/usrfiles/", "/usr/", "AllowBrowse");
+SimpleFileServiceBindInstance("h2esq-demo-server", "/home/", "/home/", "AllowBrowse");
+SimpleFileServiceBindInstance("h2esq-demo-server", "/var/", "/var/", "AllowBrowse");
+SimpleFileServiceBindInstance("h2esq-demo-server", "/demofiles/", "./demo/local-files/"
+		, "AllowBrowse", "AllowUpload", "AllowRemove");
+FooServiceBindInstance("h2esq-demo-server", "/foo/");
+ServerStopBindInstance("h2esq-demo-server", "/stop");
+
+# eof

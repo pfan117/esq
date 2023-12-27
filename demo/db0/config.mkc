@@ -1,0 +1,7 @@
+LogPrintEnable();
+#LogPrintDisable();
+StartBeeServer(12121);
+OpenDiskBucketFromFolder("demo/db0");
+StartHostControlInstance(22121);
+AddDiskBucket("demo/db0", "kcdb", "x", 0);
+ShiftMemBucket("mm", "x");
